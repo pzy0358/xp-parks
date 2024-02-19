@@ -46,116 +46,123 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/Workbench',
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      path: 'Workbench',
+      name: 'Workbench',
+      component: () => import('@/views/Workbench/index'),
+      meta: { title: '工作台', icon: 'el-icon-eleme' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/park',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/park/Building',
+    name: 'park',
+    meta: { title: '园区管理', icon: 'el-icon-office-building' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'Building',
+        name: 'Building',
+        component: () => import('@/views/park/Building/index'),
+        meta: { title: '楼宇管理' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'Enterprice',
+        name: 'Enterprice',
+        component: () => import('@/views/park/Enterprice/index'),
+        meta: { title: '企业管理' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/Car',
     component: Layout,
+    redirect: '/Car/Area',
+    name: 'Car',
+    meta: { title: '行车管理', icon: 'el-icon-guide' },
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'Area',
+        name: 'Area',
+        component: () => import('@/views/Car/Area/index'),
+        meta: { title: '区域管理' }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: 'MonthCard',
+        name: 'MonthCard',
+        component: () => import('@/views/Car/MonthCard/index'),
+        meta: { title: '月卡管理' }
+      },
+      {
+        path: 'Pay',
+        name: 'Pay',
+        component: () => import('@/views/Car/Pay/index'),
+        meta: { title: '停车缴费管理' }
+      },
+      {
+        path: 'Billing',
+        name: 'Billing',
+        component: () => import('@/views/Car/Billing/index'),
+        meta: { title: '计费规则管理' }
       }
     ]
   },
 
   {
-    path: 'external-link',
+    path: '/Propety',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'cost',
+        name: 'cost',
+        component: () => import('@/views/Propety/cost/index'),
+        meta: { title: '物业费管理', icon: 'form' }
+      }
+    ]
+  },
+
+  {
+    path: '/Rod',
+    component: Layout,
+    redirect: '/Rod/manage',
+    name: 'Rod',
+    meta: { title: '一体杆管理', icon: 'el-icon-refrigerator' },
+    children: [
+      {
+        path: 'manage',
+        name: 'manage',
+        component: () => import('@/views/Rod/manage/index'),
+        meta: { title: '一体杆管理' }
+      },
+      {
+        path: 'warnList',
+        name: 'warnList',
+        component: () => import('@/views/Rod/warnList/index'),
+        meta: { title: '告警记录' }
+      }
+    ]
+  },
+  {
+    path: '/System',
+    component: Layout,
+    redirect: '/System/Employee',
+    name: 'System',
+    meta: { title: '系统管理', icon: 'el-icon-setting' },
+    children: [
+      {
+        path: 'Employee',
+        name: 'Employee',
+        component: () => import('@/views/System/Employee/index'),
+        meta: { title: '员工管理' }
+      },
+      {
+        path: 'Permission',
+        name: 'Permission',
+        component: () => import('@/views/System/Permission/index'),
+        meta: { title: '角色管理' }
       }
     ]
   },
