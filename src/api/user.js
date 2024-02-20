@@ -1,7 +1,7 @@
-import service from '@/utils/request'
+import request from '@/utils/request'
 
 export function loginApi(data) {
-  return service({
+  return request({
     url: '/park/login',
     method: 'POST',
     data
@@ -9,7 +9,7 @@ export function loginApi(data) {
 }
 
 export function getInfoApi() {
-  return service({
+  return request({
     url: '/system/user/dropList',
     method: 'GET'
   })

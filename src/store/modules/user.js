@@ -16,27 +16,25 @@ const mutations = {
     state.token = null
     removeToken()
   },
-  // 设置用户信息
-  // setUser(state, user) {
-  //   state.userInfo = user
-  // }
+  setUser(state, user) {
+    state.userInfo = user
+  }
 }
 
 const actions = {
   // 登录
   async login(context, payload) {
     delete payload.isAgree
-    const token = await loginApi(payload)
-    console.log('token==>', token)
-    // context.commit('setToken', res.data.token)
-    context.commit('setToken', token)
+    const res = await loginApi(payload)
+    console.log('token==>', res)
+    context.commit('setToken', res.data.token)
+    // context.commit('setToken', token)
   },
-  // 用户信息
-  // async getUserInfo({ commit }) {
-  //   const res = await getInfoApi()
-  //   console.log('res==>', res)
-  //   commit('setUser', res)
-  // }
+  async getUserInfo(context) {
+    const res = await getInfoApi()
+    console.log('res==>', res)
+    context.commit('setUser', res.data[1])
+  },
   logout(context) {
     // 清除token
     context.commit('removeToken')
