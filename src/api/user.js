@@ -10,7 +10,7 @@ export function loginApi(data) {
 
 export function getInfoApi() {
   return request({
-    url: '/system/user/dropList',
+    url: '/park/user/profile',
     method: 'GET'
   })
 }

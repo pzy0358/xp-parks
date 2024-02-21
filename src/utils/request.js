@@ -56,7 +56,7 @@ import store from '@/store'
 import { getToken } from '@/utils/auth'
 const service = axios.create({
   baseURL: 'https://api-hmzs.itheima.net/api',
-  timeout: 5000 // request timeout
+  timeout: 5000
 })
 
 // request interceptor

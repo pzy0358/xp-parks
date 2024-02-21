@@ -27,7 +27,10 @@
           class="demo-table-expand"
         >
 
-          <!-- <el-table-column prop="name" label="租凭楼宇" /> -->
+          <el-table-column prop="buildingName" label="租凭楼宇" />
+          <el-table-column prop="" label="租凭起止时间" />
+          <el-table-column prop="" label="合同状态" />
+          <el-table-column prop="" label="操作" />
         </el-table>
       </el-table-column>
       <el-table-column label="企业名称" prop="name" />
@@ -97,8 +100,9 @@ export default {
     },
     // 获取企业下拉
     async getEnter() {
-      const res = await LookEnterApi({ id: 5 })
+      const res = await LookEnterApi({ id: 1 })
       console.log('企业下拉', res)
+      this.tableList = res.data
     },
     // 删除企业
     async del(id) {

@@ -40,7 +40,7 @@
     />
 
     <!-- 添加模态框 -->
-    <el-dialog title="添加楼宇" :visible.sync="dialogVisible" width="50%">
+    <el-dialog title="添加楼宇" :visible.sync="dialogVisible" width="40%">
       <el-form
         ref="ruleForm"
         :model="ruleForm"
@@ -77,7 +77,7 @@
     </el-dialog>
 
     <!-- 编辑模态框 -->
-    <el-dialog title="修改楼宇" :visible.sync="dialogVisible1" width="50%">
+    <el-dialog title="修改楼宇" :visible.sync="dialogVisible1" width="40%">
       <el-form
         ref="form"
         :model="form"
@@ -142,7 +142,7 @@ export default {
         name: [{ required: true, message: '请输入楼宇名称', trigger: 'blur' }],
         floors: [
           { required: true, message: '请输入楼宇层数', trigger: 'blur' },
-          { max: 20, message: '楼层最多20层', trigger: 'blur' }
+          { min: 1, max: 20, message: '楼层最多20层', trigger: 'blur' }
         ],
         area: [{ required: true, message: '请输入在管面积', trigger: 'blur' }],
         propertyFeePrice: [

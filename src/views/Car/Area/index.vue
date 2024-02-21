@@ -6,7 +6,7 @@
       <el-table-column prop="areaName" label="区域名称" />
       <el-table-column prop="spaceNumber" label="车位数（个）" />
       <el-table-column prop="areaProportion" label="面积（m²）" />
-      <el-table-column label="计费规则">
+      <el-table-column label="计费规则" prop="ruleName">
         <template slot-scope="scope">
           <el-tooltip :content="scope.row.hoverRuleName" placement="top">
             <span>{{ scope.row.ruleName }}</span>
@@ -22,13 +22,16 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      :current-page="page"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
-      @current-change="changePage"
-    />
+    <div style="float: right">
+      <el-pagination
+        :current-page="page"
+        :page-size="pageSize"
+        :page-sizes="[5, 10, 20, 30]"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @current-change="changePage"
+      />
+    </div>
     <!-- 添加区域模态框 -->
     <el-dialog title="添加区域" :visible.sync="dialogVisible" width="60%">
       <el-form
@@ -60,10 +63,12 @@
             placeholder="请选择"
             style="width: 100%"
           >
-            <el-option label="分段计费" value="分段计费" />
-            <el-option label="按次计费" value="按次计费" />
-            <el-option label="按小时计费" value="按小时计费" />
-            <el-option label="按分钟计费" value="按分钟计费" />
+            <el-option
+              v-for="item in list"
+              :key="item.id"
+              :label="item.ruleName"
+              :value="item.id"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="备注">
@@ -76,7 +81,7 @@
       </span>
     </el-dialog>
     <!-- 编辑区域模态框 -->
-    <el-dialog title="添加区域" :visible.sync="dialogVisible1" width="60%">
+    <el-dialog title="编辑区域" :visible.sync="dialogVisible1" width="60%">
       <el-form
         ref="ruleForm1"
         :model="ruleForm1"
@@ -106,10 +111,12 @@
             placeholder="请选择"
             style="width: 100%"
           >
-            <el-option label="分段计费" value="分段计费" />
-            <el-option label="按次计费" value="按次计费" />
-            <el-option label="按小时计费" value="按小时计费" />
-            <el-option label="按分钟计费" value="按分钟计费" />
+            <el-option
+              v-for="item in list"
+              :key="item.id"
+              :label="item.ruleName"
+              :value="item.id"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="备注">
@@ -129,11 +136,13 @@ import {
   getAreaListApi,
   deleteAreaApi,
   addAreaApi,
-  UpdateAreaApi
+  UpdateAreaApi,
+  getRuleListApi
 } from '@/api/area'
 export default {
   data() {
     return {
+      list: [],
       tableData: [],
       page: 1,
       pageSize: 10,
@@ -144,15 +153,14 @@ export default {
         areaName: '',
         areaProportion: '',
         spaceNumber: '',
-        ruleId: '',
+        ruleId: null,
         remark: ''
       },
       ruleForm1: {
-        id: null,
         areaName: '',
         areaProportion: '',
         spaceNumber: '',
-        ruleId: '',
+        ruleId: null,
         remark: ''
       },
       rules: {
@@ -165,7 +173,7 @@ export default {
         spaceNumber: [
           { required: true, message: '请输入车位数量', trigger: 'blur' }
         ],
-        ruleId: [
+        ruleName: [
           { required: true, message: '请选择关联计费规则', trigger: 'change' }
         ]
       }
@@ -173,6 +181,7 @@ export default {
   },
   created() {
     this.getAreaList()
+    this.getRule()
   },
   methods: {
     // 分页
@@ -188,6 +197,12 @@ export default {
       console.log('area', res)
       this.tableData = res.data.rows
       this.total = res.data.total
+    },
+    // 区域列表接口
+    async getRule() {
+      const res = await getRuleListApi()
+      console.log('liebiao', res)
+      this.list = res.data.rows
     },
     // 删除区域
     async del(id) {
@@ -233,6 +248,8 @@ export default {
     // 编辑
     edit(obj) {
       this.dialogVisible1 = true
+      delete obj.ruleName
+      delete obj.hoverRuleName
       this.ruleForm1 = { ...obj }
       console.log(this.ruleForm1)
     },
@@ -240,15 +257,10 @@ export default {
     conformEdit() {
       this.$refs.ruleForm1.validate(async(valid) => {
         if (valid) {
-          const res = await UpdateAreaApi({
-            id: this.ruleForm1.id,
-            areaName: this.ruleForm1.areaName,
-            spaceNumber: this.ruleForm1.spaceNumber,
-            remark: this.ruleForm1.remark,
-            areaProportion: this.ruleForm1.areaProportion,
-            ruleld: this.ruleForm1.ruleld
-          })
+          const res = await UpdateAreaApi(this.ruleForm1)
           console.log('修改', res)
+          this.close()
+          this.getAreaList()
         }
       })
     }

@@ -33,3 +33,12 @@ export function UpdateAreaApi(data) {
     data
   })
 }
+
+// 获取关联区域下拉列表
+export function getRuleListApi(params) {
+  return request({
+    url: '/parking/rule/list',
+    method: 'GET',
+    params
+  })
+}

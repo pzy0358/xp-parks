@@ -16,7 +16,7 @@ const mutations = {
     state.token = null
     removeToken()
   },
-  setUser(state, user) {
+  setUserInfo(state, user) {
     state.userInfo = user
   }
 }
@@ -30,10 +30,17 @@ const actions = {
     context.commit('setToken', res.data.token)
     // context.commit('setToken', token)
   },
-  async getUserInfo(context) {
-    const res = await getInfoApi()
-    console.log('res==>', res)
-    context.commit('setUser', res.data[1])
+  // 获取用户信息
+  async getUserInfo({ commit }) {
+    try {
+      // 调用获取用户信息接口
+      const { data } = await getInfoApi()
+      console.log('Res==>', data)
+      // 存储token
+      commit('setUserInfo', data)
+    } catch (error) {
+      console.log(error)
+    }
   },
   logout(context) {
     // 清除token
