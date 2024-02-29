@@ -1,4 +1,4 @@
-import { constantRoutes } from '@/router'
+import { constantRoutes, resetRouter } from '@/router'
 const state = {
   menus: [...constantRoutes]
 }
@@ -6,6 +6,11 @@ const state = {
 const mutations = {
   setMenus(state, asyncMenus) {
     state.menus = [...constantRoutes, ...asyncMenus]
+  },
+  resetMenu(state) {
+    state.menus = constantRoutes
+    // 重置路由
+    resetRouter()
   }
 }
 

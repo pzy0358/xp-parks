@@ -12,7 +12,7 @@
           <el-button type="primary" @click="search">查询</el-button>
         </el-form-item>
       </el-form>
-      <el-button class="add" type="primary">添加企业</el-button>
+      <el-button v-auth-btn="'park:enterprise:add'" class="add" type="primary">添加企业</el-button>
     </div>
 
     <!-- 表格  -->
@@ -40,7 +40,7 @@
         <template v-slot="{ row }">
           <el-button type="text">添加合同</el-button>
           <el-button type="text">查看</el-button>
-          <el-button type="text">编辑</el-button>
+          <el-button v-auth-btn="'park:enterprise:edit'" type="text">编辑</el-button>
           <el-button type="text" @click="del(row.id)">删除</el-button>
         </template>
       </el-table-column>

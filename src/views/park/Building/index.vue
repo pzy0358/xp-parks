@@ -9,7 +9,7 @@
           <el-button type="primary" @click="search">查询</el-button>
         </el-form-item>
       </el-form>
-      <el-button class="add" type="primary" @click="open">添加楼宇</el-button>
+      <el-button v-auth-btn="'park:building:add'" class="add" type="primary" @click="open">添加楼宇</el-button>
     </div>
 
     <!-- 表格  -->
@@ -27,7 +27,7 @@
       <el-table-column label="操作">
         <template v-slot="{ row }">
           <el-button type="text" @click="edit(row)">编辑</el-button>
-          <el-button type="text" @click="del(row.id)">删除</el-button>
+          <el-button v-auth-btn="'park:building:remove'" type="text" @click="del(row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -61,10 +61,7 @@
           </el-input>
         </el-form-item>
         <el-form-item label="物业费" prop="propertyFeePrice">
-          <el-input
-            v-model="ruleForm.propertyFeePrice"
-            placeholder="请输入物业费"
-          >
+          <el-input v-model="ruleForm.propertyFeePrice" placeholder="请输入物业费">
             <template slot="append">m²</template>
           </el-input>
         </el-form-item>
@@ -78,14 +75,7 @@
 
     <!-- 编辑模态框 -->
     <el-dialog title="修改楼宇" :visible.sync="dialogVisible1" width="40%">
-      <el-form
-        ref="form"
-        :model="form"
-        :rules="rules1"
-        label-width="100px"
-        class="demo-form"
-        label-position="top"
-      >
+      <el-form ref="form" :model="form" :rules="rules1" label-width="100px" class="demo-form" label-position="top">
         <el-form-item label="楼宇名称" prop="name">
           <el-input v-model="form.name" placeholder="请输入楼宇名称" />
         </el-form-item>

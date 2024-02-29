@@ -58,7 +58,7 @@ export const constantRoutes = [
     path: '/System/add',
     component: () => import('@/views/System/add/index'),
     hidden: true
-  },
+  }
 
   // {
   //   path: '/park',
@@ -173,7 +173,6 @@ export const constantRoutes = [
   // },
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({

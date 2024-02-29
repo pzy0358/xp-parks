@@ -102,6 +102,7 @@ router.beforeEach(async(to, from, next) => {
         } catch (error) {
           // 失败, 清空token 以及 用户信息
           await store.dispatch('user/logout')
+          await store.dispatch('menu/resetMenu')
           // 失败, 清空token 以及 用户信息
           // next(`/login?redirect=${to.fullPath}`)
           // Message.error(error || 'Has Error')

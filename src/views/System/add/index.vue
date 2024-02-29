@@ -158,6 +158,7 @@ export default {
   height: 80px;
   background-color: #fff;
   // position: fixed;
+  position: absolute;
   bottom: 0;
   text-align: center;
 }

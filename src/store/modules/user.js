@@ -14,7 +14,8 @@ const mutations = {
   // 删除token
   removeToken(state) {
     state.token = ''
-    state.token = null
+    state.userInfo = null
+    // state.token = null
     removeToken()
   },
   setUserInfo(state, userInfo) {
