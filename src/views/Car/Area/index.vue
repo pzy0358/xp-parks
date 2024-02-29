@@ -52,10 +52,9 @@
           />
         </el-form-item>
         <el-form-item label="面积（m²）" prop="areaProportion">
-          <el-input
-            v-model="ruleForm.areaProportion"
-            placeholder="请输入面积"
-          />
+          <el-input v-model="ruleForm.areaProportion" placeholder="请输入面积">
+            <template slot="append">m²</template>
+          </el-input>
         </el-form-item>
         <el-form-item label="关联计费规则" prop="ruleId">
           <el-select
@@ -100,10 +99,9 @@
           />
         </el-form-item>
         <el-form-item label="面积（m²）" prop="areaProportion">
-          <el-input
-            v-model="ruleForm1.areaProportion"
-            placeholder="请输入面积"
-          />
+          <el-input v-model="ruleForm1.areaProportion" placeholder="请输入面积">
+            <template slot="append">m²</template>
+          </el-input>
         </el-form-item>
         <el-form-item label="关联计费规则" prop="ruleId">
           <el-select

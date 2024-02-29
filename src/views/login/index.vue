@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       form: {
-        username: 'demo',
-        password: 'zh@hm#23',
+        username: '',
+        password: '',
         isAgree: false
       },
       rules: {

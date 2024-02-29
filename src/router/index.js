@@ -54,118 +54,123 @@ export const constantRoutes = [
       meta: { title: '工作台', icon: 'el-icon-eleme' }
     }]
   },
-
   {
-    path: '/park',
-    component: Layout,
-    redirect: '/park/Building',
-    name: 'park',
-    meta: { title: '园区管理', icon: 'el-icon-office-building' },
-    children: [
-      {
-        path: 'Building',
-        name: 'Building',
-        component: () => import('@/views/park/Building/index'),
-        meta: { title: '楼宇管理' }
-      },
-      {
-        path: 'Enterprice',
-        name: 'Enterprice',
-        component: () => import('@/views/park/Enterprice/index'),
-        meta: { title: '企业管理' }
-      }
-    ]
+    path: '/System/add',
+    component: () => import('@/views/System/add/index'),
+    hidden: true
   },
 
-  {
-    path: '/Car',
-    component: Layout,
-    redirect: '/Car/Area',
-    name: 'Car',
-    meta: { title: '行车管理', icon: 'el-icon-guide' },
-    children: [
-      {
-        path: 'Area',
-        name: 'Area',
-        component: () => import('@/views/Car/Area/index'),
-        meta: { title: '区域管理' }
-      },
-      {
-        path: 'MonthCard',
-        name: 'MonthCard',
-        component: () => import('@/views/Car/MonthCard/index'),
-        meta: { title: '月卡管理' }
-      },
-      {
-        path: 'Pay',
-        name: 'Pay',
-        component: () => import('@/views/Car/Pay/index'),
-        meta: { title: '停车缴费管理' }
-      },
-      {
-        path: 'Billing',
-        name: 'Billing',
-        component: () => import('@/views/Car/Billing/index'),
-        meta: { title: '计费规则管理' }
-      }
-    ]
-  },
+  // {
+  //   path: '/park',
+  //   component: Layout,
+  //   redirect: '/park/Building',
+  //   name: 'park',
+  //   meta: { title: '园区管理', icon: 'el-icon-office-building' },
+  //   children: [
+  //     {
+  //       path: 'Building',
+  //       name: 'Building',
+  //       component: () => import('@/views/park/Building/index'),
+  //       meta: { title: '楼宇管理' }
+  //     },
+  //     {
+  //       path: 'Enterprice',
+  //       name: 'Enterprice',
+  //       component: () => import('@/views/park/Enterprice/index'),
+  //       meta: { title: '企业管理' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: '/Propety',
-    component: Layout,
-    children: [
-      {
-        path: 'cost',
-        name: 'cost',
-        component: () => import('@/views/Propety/cost/index'),
-        meta: { title: '物业费管理', icon: 'form' }
-      }
-    ]
-  },
+  // {
+  //   path: '/Car',
+  //   component: Layout,
+  //   redirect: '/Car/Area',
+  //   name: 'Car',
+  //   meta: { title: '行车管理', icon: 'el-icon-guide' },
+  //   children: [
+  //     {
+  //       path: 'Area',
+  //       name: 'Area',
+  //       component: () => import('@/views/Car/Area/index'),
+  //       meta: { title: '区域管理' }
+  //     },
+  //     {
+  //       path: 'MonthCard',
+  //       name: 'MonthCard',
+  //       component: () => import('@/views/Car/MonthCard/index'),
+  //       meta: { title: '月卡管理' }
+  //     },
+  //     {
+  //       path: 'Pay',
+  //       name: 'Pay',
+  //       component: () => import('@/views/Car/Pay/index'),
+  //       meta: { title: '停车缴费管理' }
+  //     },
+  //     {
+  //       path: 'Billing',
+  //       name: 'Billing',
+  //       component: () => import('@/views/Car/Billing/index'),
+  //       meta: { title: '计费规则管理' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: '/Rod',
-    component: Layout,
-    redirect: '/Rod/manage',
-    name: 'Rod',
-    meta: { title: '一体杆管理', icon: 'el-icon-refrigerator' },
-    children: [
-      {
-        path: 'manage',
-        name: 'manage',
-        component: () => import('@/views/Rod/manage/index'),
-        meta: { title: '一体杆管理' }
-      },
-      {
-        path: 'warnList',
-        name: 'warnList',
-        component: () => import('@/views/Rod/warnList/index'),
-        meta: { title: '告警记录' }
-      }
-    ]
-  },
-  {
-    path: '/System',
-    component: Layout,
-    redirect: '/System/Employee',
-    name: 'System',
-    meta: { title: '系统管理', icon: 'el-icon-setting' },
-    children: [
-      {
-        path: 'Employee',
-        name: 'Employee',
-        component: () => import('@/views/System/Employee/index'),
-        meta: { title: '员工管理' }
-      },
-      {
-        path: 'Permission',
-        name: 'Permission',
-        component: () => import('@/views/System/Permission/index'),
-        meta: { title: '角色管理' }
-      }
-    ]
-  },
+  // {
+  //   path: '/Propety',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'cost',
+  //       name: 'cost',
+  //       component: () => import('@/views/Propety/cost/index'),
+  //       meta: { title: '物业费管理', icon: 'form' }
+  //     }
+  //   ]
+  // },
+
+  // {
+  //   path: '/Rod',
+  //   component: Layout,
+  //   redirect: '/Rod/manage',
+  //   name: 'Rod',
+  //   meta: { title: '一体杆管理', icon: 'el-icon-refrigerator' },
+  //   children: [
+  //     {
+  //       path: 'manage',
+  //       name: 'manage',
+  //       component: () => import('@/views/Rod/manage/index'),
+  //       meta: { title: '一体杆管理' }
+  //     },
+  //     {
+  //       path: 'warnList',
+  //       name: 'warnList',
+  //       component: () => import('@/views/Rod/warnList/index'),
+  //       meta: { title: '告警记录' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/System',
+  //   component: Layout,
+  //   redirect: '/System/Employee',
+  //   name: 'System',
+  //   meta: { title: '系统管理', icon: 'el-icon-setting' },
+  //   children: [
+  //     {
+  //       path: 'Employee',
+  //       name: 'Employee',
+  //       component: () => import('@/views/System/Employee/index'),
+  //       meta: { title: '员工管理' }
+  //     },
+  //     {
+  //       path: 'Permission',
+  //       name: 'Permission',
+  //       component: () => import('@/views/System/Permission/index'),
+  //       meta: { title: '角色管理' }
+  //     }
+  //   ]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
