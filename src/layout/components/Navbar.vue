@@ -9,7 +9,7 @@
         <div class="avatar-wrapper">
           <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
           <i class="el-icon-caret-bottom" /> -->
-          <div class="data-view">可视化大屏</div>
+          <div class="data-view" @click="$router.push('/big-screen')">可视化大屏</div>
           <div class="user-name">{{ name }}</div>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">

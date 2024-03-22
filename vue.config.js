@@ -36,6 +36,19 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    proxy: {
+      // 跨域代理
+      // "/dev-api": {
+      [process.env.VUE_APP_BASE_API]: {
+        // target: " https://api-hmzs.itheima.net/v1",
+        target: 'https://api-hmzs.itheima.net/api',
+        changeOrigin: true,
+        pathRewrite: {
+          // "^/api": "",
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
+    },
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {

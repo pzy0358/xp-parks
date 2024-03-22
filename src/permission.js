@@ -90,8 +90,8 @@ router.beforeEach(async(to, from, next) => {
           console.log('newRoutes', newRoutes)
           // 4. 动态的添加到路由表
           router.addRoutes([
-            ...newRoutes, // 404 page must be placed at the end !!!
-            { path: '*', redirect: '/404', hidden: true }
+            ...newRoutes // 404 page must be placed at the end !!!
+            // { path: '*', redirect: '/404', hidden: true }
           ])
           // 成功 放行
 
